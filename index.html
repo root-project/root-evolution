@@ -1,0 +1,79 @@
+<!--======= index.html - ROOT Evolution ========================================
+
+Copied and adapted from https://github.com/apple/swift-evolution
+
+Licensed under Apache License v2.0 with Runtime Library Exception
+
+-->
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+        <link rel="license" href="https://github.com/root-project/root/blob/master/LICENSE" />
+        <link rel="shortcut icon" sizes="16x16 24x24 32x32 48x48 64x64 128x128 256x256" type="image/vnd.microsoft.icon" href="https://root.cern.ch/img/logos/ROOT_Logo/logos/win/win-icon-allsizes.ico" />
+
+        <title>ROOT Evolution</title>
+        <link href="index.css" rel="stylesheet" type="text/css">
+    <body>
+        <div class="app">
+            <header>
+                <span class="header-contents">
+                    <a id="logo" href="#" title="ROOT Evolution" role="img" aria-label="ROOT Evolution"></a>
+                    <h1 id="title"><a href="#">ROOT Evolution</a></h1>
+                </span>
+            </header>
+            <nav>
+                <div class="nav-contents">
+                    <div id="search-container">
+                        <svg id="search-icon" width="17px" height="17px" viewBox="7 5 17 17" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                            <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(8.000000, 6.000000)">
+                                <circle stroke="#333333" cx="6" cy="6" r="6"></circle>
+                                <path d="M10.5,10.5 L14.5,14.5" stroke="#333333" stroke-linecap="square"></path>
+                            </g>
+                        </svg>
+                        <span class="filter-container">
+                            <input id="search-filter" class="filter" title="Search proposals" placeholder="Search" type="search" />
+                            <svg id="clear-button" role="button" tabindex="0" class="hidden" width="14px" height="13px" viewBox="182 7 14 13" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(183.000000, 8.000000)" stroke-linecap="square">
+                                    <path d="M11.6842105,0.305555556 L0.947368421,10.6944444" stroke="#333333"></path>
+                                    <path d="M0.947368421,0.305555556 L11.6842105,10.6944444" stroke="#333333"></path>
+                                </g>
+                            </svg>
+                        </span>
+                    </div>
+                    <span role="button" class="filter-button" aria-label="Toggle status filtering options" aria-pressed="false" tabindex="0">
+                        <svg width="21px" height="21px" viewBox="0 0 21 21" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                            <g id="filter-icon" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(1.381818, 0.400000)">
+                                <ellipse class="icon-circle" id="filter-icon-circle" stroke="#888" cx="8.92443193" cy="9.85624994" rx="8.90625" ry="8.90625"></ellipse>
+                                <path d="M3.38221606,6.64717725 L14.3694355,6.64717725" class="icon-line" id="line-top" stroke="#888" stroke-linecap="square"></path>
+                                <path d="M5.25846596,10.2124999 L12.7515909,10.2124999" class="icon-line" id="line-middle" stroke="#888" stroke-linecap="square"></path>
+                                <path d="M6.9967741,13.7749999 L11.1173991,13.7749999" class="icon-line" id="line-bottom" stroke="#888" stroke-linecap="square"></path>  
+                            </g>
+                        </svg>
+                    </span>
+                    <div class="filter-toggle hidden">
+                        <div class="filter-toggle-contents">
+                            <span class="filter-description">Filtered by:
+                                <a role="button" tabindex="0" class="toggle-filter-panel" aria-pressed="false">All Statuses</a>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+            <main>
+                <article class="proposals">
+                    <div id="proposals-count"><span id="proposals-count-number"></span></div>
+                    <ul class="proposals-list">
+                        <!-- {proposals} -->
+                    </ul>
+                </article>
+            </main>
+            <footer>
+                <div class="footer-contents">
+                </div>
+            </footer>
+        </div>
+        <script src="index.js"></script>
+    </body>
+</html>
