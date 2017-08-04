@@ -1,6 +1,6 @@
 # ROOT Modularization
 
-* Proposal: [SE-0001](0001-modularization.md)
+* Proposal: [ROOT-0001](0001-modularization.md)
 * Authors: [Oksana Shadura](https://github.com/oshadura)
 * Review Manager: 
 * Status:
