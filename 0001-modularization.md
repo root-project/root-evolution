@@ -1,3 +1,12 @@
+# ROOT Testing
+
+* Proposal: [SE-0001](0001-modularization.md)
+* Authors: [Oksana Shadura](https://github.com/oshadura)
+* Review Manager: 
+* Status:
+* Decision Notes:
+* Bug:
+
 ### Introduction
 Represented in ROOT Planning Meeting 2017 as a set of separate deliverables:
 1. Essential for opening ROOT to collaborators willing to contribute with a large chunk of functionality 
