@@ -1,4 +1,4 @@
-# ROOT Testing
+# ROOT Modularization
 
 * Proposal: [SE-0001](0001-modularization.md)
 * Authors: [Oksana Shadura](https://github.com/oshadura)
