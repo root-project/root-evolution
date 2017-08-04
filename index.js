@@ -590,13 +590,22 @@ function filterProposals () {
     clearButton.classList.remove('hidden')
   }
 
-  // The search input treats words as order-independent.
-  var matchingSets = filter.split(/\s/)
-    .filter(function (s) { return s.length > 0 })
-    .map(function (part) { return _searchProposals(part) })
+  var matchingSets = [proposals.concat()]
 
-  if (filter.trim().length === 0) {
-    matchingSets = [proposals.concat()]
+  // Comma-separated lists of proposal IDs are treated as an "or" search.
+  if (filter.match(/(ROOT-\d\d\d\d)($|((,ROOT-\d\d\d\d)+))/i)) {
+    var proposalIDs = filter.split(',').map(function (id) {
+      return id.toUpperCase()
+    })
+
+    matchingSets[0] = matchingSets[0].filter(function (proposal) {
+      return proposalIDs.indexOf(proposal.id) !== -1
+    })
+  } else if (filter.trim().length !== 0) {
+    // The search input treats words as order-independent.
+    matchingSets = filter.split(/\s/)
+      .filter(function (s) { return s.length > 0 })
+      .map(function (part) { return _searchProposals(part) })
   }
 
   var intersection = matchingSets.reduce(function (intersection, candidates) {
@@ -604,6 +613,7 @@ function filterProposals () {
   }, matchingSets[0] || [])
 
   _applyFilter(intersection)
+  _updateURIFragment()
 }
 
 /**
