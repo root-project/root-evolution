@@ -114,6 +114,9 @@ function init () {
     if (document.querySelector('#search-filter').value.trim()) {
       filterProposals()
     }
+    
+    // apply selections from the current page's URI fragment
+    _applyFragment(document.location.hash)
   })
 
   req.addEventListener('error', function (e) {
@@ -774,4 +777,67 @@ function updateFilterDescription (selectedStateNames) {
 function updateProposalsCount (count) {
   var numberField = document.querySelector('#proposals-count-number')
   numberField.innerText = (count.toString() + ' proposal' + (count !== 1 ? 's' : ''))
+}
+
+/**
+ * Writes out the current search and filter settings to document.location
+ * via window.replaceState.
+ */
+function _updateURIFragment () {
+  var actions = { proposal: [], search: null, status: [], version: [] }
+
+  var search = document.querySelector('#search-filter')
+
+  if (search.value && search.value.match(/(ROOT-\d\d\d\d)($|((,ROOT-\d\d\d\d)+))/i)) {
+    actions.proposal = search.value.toUpperCase().split(',')
+  } else {
+    actions.search = search.value
+  }
+
+  var selectedVersions = document.querySelectorAll('.filter-by-root-version:checked')
+  var versions = [].map.call(selectedVersions, function (checkbox) {
+    return checkbox.value.split('swift-swift-')[1].split('-').join('.')
+  })
+
+  actions.version = versions
+
+  var selectedStatuses = document.querySelectorAll('.filtered-by-status:checked')
+  var statuses = [].map.call(selectedStatuses, function (checkbox) {
+    var className = checkbox.value
+
+    var correspondingStatus = Object.keys(states).filter(function (status) {
+      if (states[status].className === className) return true
+      return false
+    })[0]
+
+    return states[correspondingStatus].className
+  })
+
+  // .implemented is redundant if any specific implementation versions are selected.
+  if (actions.version.length) {
+    statuses = statuses.filter(function (status) {
+      return status !== states['.implemented'].className
+    })
+  }
+
+  actions.status = statuses
+
+  // build the actual fragment string.
+  var fragments = []
+  if (actions.proposal.length) fragments.push('proposal=' + actions.proposal.join(','))
+  if (actions.status.length) fragments.push('status=' + actions.status.join(','))
+  if (actions.version.length) fragments.push('version=' + actions.version.join(','))
+
+  // encoding the search lets you search for `??` and other edge cases.
+  if (actions.search) fragments.push('search=' + encodeURIComponent(actions.search))
+
+  if (!fragments.length) {
+    window.history.replaceState(null, null, './')
+    return
+  }
+
+  var fragment = '#?' + fragments.join('&')
+
+  // avoid creating new history entries each time a search or filter updates
+  window.history.replaceState(null, null, fragment)
 }
