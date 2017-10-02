@@ -17,7 +17,7 @@ var frameworkVersions = ['6.12']
 /** Storage for the user's current selection of filters when filtering is toggled off. */
 var filterSelection = []
 
-var REPO_PROPOSALS_BASE_URL = 'https://github.com/root-project/root-evolution/blob/master/proposals'
+var REPO_PROPOSALS_BASE_URL = 'https://github.com/root-project/root-evolution/blob/master/proposals.json'
 
 /**
  * `name`: Mapping of the states in the proposals JSON to human-readable names.
