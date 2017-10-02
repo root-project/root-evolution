@@ -121,7 +121,7 @@ function init () {
   })
 
   // FIXME: Add this url giving json to the proposals like in https://data.swift.org/swift-evolution/proposals
-  req.open('get', 'https://data.root.cern.ch/root-evolution/proposals')
+  req.open('get', 'https://raw.githubusercontent.com/root-project/root-evolution/master/proposals')
   req.send()
 }
 
