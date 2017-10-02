@@ -17,7 +17,7 @@ var frameworkVersions = ['6.12']
 /** Storage for the user's current selection of filters when filtering is toggled off. */
 var filterSelection = []
 
-var REPO_PROPOSALS_BASE_URL = 'https://github.com/root-project/root-evolution/blob/master/proposals.json'
+var REPO_PROPOSALS_BASE_URL = 'https://github.com/root-project/root-evolution/blob/master/proposals'
 
 /**
  * `name`: Mapping of the states in the proposals JSON to human-readable names.
@@ -121,7 +121,7 @@ function init () {
   })
 
   // FIXME: Add this url giving json to the proposals like in https://data.swift.org/swift-evolution/proposals
-  req.open('get', 'https://raw.githubusercontent.com/root-project/root-evolution/master/proposals')
+  req.open('get', 'https://raw.githubusercontent.com/root-project/root-evolution/master/proposals.json')
   req.send()
 }
 
