@@ -1,26 +1,76 @@
 [
   {
-    "title": " root-modularization\n",
+    "title": " Rework cling jit symbol resolution\n",
     "trackingBugs": [
     ],
     "warnings": [
     ],
-    "link": "0001-root-modularization.md",
+    "link": "0000-rework-cling-jit-symbol-resolution.md",
     "reviewManager": {
       "name": "",
       "link": ""
     },
-    "id": "ROOT-0001",
-    "sha": "b12391d26ec1371c630816b61ba6977d ",
+    "id": "ROOT-0005",
+    "sha": "db324b7f0b397008c72d0e2a33dfaf8e5292160e",
     "status": {
       "version": "0.1",
       "state": ".awaitingReview"
     },
-    "summary": "ROOT modularization project proposal.\n",
+    "summary": "Currently, cling's symbol resolution mechanism gives a preference to the local content to itself, i.e. resolves symbols from where its JIT resides (either its own binary or a shared library, libCling.so) first. This ensures that the symbol resolution will pick up compatible `llvm` and `clang` symbols for its runtime. However, this has a drawback: ROOT cannot provide its own low-level support libraries such as `zlib` other than the ones linked against libCling. \n",
     "authors": [
       {
-        "name": "Oksana Shadura",
-        "link": "https://github.com/oshadura"
+        "name": "Vassil Vassilev",
+        "link": "https://github.com/vgvassilev"
+      }
+    ]
+  },
+  {
+    "title": " A NUMA aware multithreaded executor for ROOT\n",
+    "trackingBugs": [
+    ],
+    "warnings": [
+    ],
+    "link": "0004-rootcling-refactor.md",
+    "reviewManager": {
+      "name": "",
+      "link": ""
+    },
+    "id": "ROOT-0004",
+    "sha": "db324b7f0b397008c72d0e2a33dfaf8e5292160e",
+    "status": {
+      "version": "0.1",
+      "state": ".awaitingReview"
+    },
+    "summary": "TNUMAExecutoris a NUMA-aware multithreaded executor for ROOT.\n",
+    "authors": [
+      {
+        "name": "Xavier Valls",
+        "link": "https://github.com/xvallspl"
+      }
+    ]
+  },
+  {
+    "title": " rootcling refactor\n",
+    "trackingBugs": [
+    ],
+    "warnings": [
+    ],
+    "link": "0003-rootcling-refactor.md",
+    "reviewManager": {
+      "name": "",
+      "link": ""
+    },
+    "id": "ROOT-0003",
+    "sha": "db324b7f0b397008c72d0e2a33dfaf8e5292160e",
+    "status": {
+      "version": "0.1",
+      "state": ".awaitingReview"
+    },
+    "summary": "Proposal for refactoring rootcling.\n",
+    "authors": [
+      {
+        "name": "Raphael Isemann",
+        "link": "https://github.com/Teemperor"
       }
     ]
   },
@@ -41,12 +91,38 @@
       "version": "0.1",
       "state": ".awaitingReview"
     },
-    "summary": "ROOT-migrate transforms source code using an old ROOT API to a new ROOT API.\n",
+    "summary": "Tool for automatic uprading user code.\n",
     "authors": [
       {
         "name": "Raphael Isemann",
         "link": "https://github.com/Teemperor"
       }
     ]
+  },
+  {
+    "title": " root-modularization\n",
+    "trackingBugs": [
+    ],
+    "warnings": [
+    ],
+    "link": "0001-root-modularization.md",
+    "reviewManager": {
+      "name": "",
+      "link": ""
+    },
+    "id": "ROOT-0001",
+    "sha": "b12391d26ec1371c630816b61ba6977d ",
+    "status": {
+      "version": "0.1",
+      "state": ".awaitingReview"
+    },
+    "summary": "ROOT modularization project proposal.\n",
+    "authors": [
+      {
+        "name": "Oksana",
+        "link": "https://github.com/oshadura"
+      }
+    ]
   }
 ]
+
