@@ -12,11 +12,11 @@
 One clear advantage of object-oriented systems is the ability to have abstraction layers provide separation between the user of an object and the implementer.  Ultimately, this helps projects scale to very large code bases.  Another technique for scaling projects is using modularization: grouping together significant functionality into distinct units with clear points of interaction.  While ROOT has a strong history in object-oriented programming, it doesn’t have a strong concept of modules. 
 
 Thus, we propose to add four concepts to the ROOT ecosystem:
-1. Module: A set of interdependent classes implementing coherent functionality and providing well-defined APIs.
-    1. Library: a module or set of modules  which solves a global problem, while  being  together and that can be used in a program or another library.
-2. Package: A distinct, self-describing resource (file, URL) that provide one or more modules.
-3. Package database: A record of all packages currently available in a ROOT installation.
-4. Package manager: An actor that can locate and install packages into a ROOT installation from a package reference, along with their transitive dependencies.
+* __Module__: A set of interdependent classes implementing coherent functionality and providing well-defined APIs.
+  * __Library__: a module or set of modules  which solves a global problem, while  being  together and that can be used in a program or another library.
+* __Package__: A distinct, self-describing resource (file, URL) that provide one or more modules.
+* __Package database__: A record of all packages currently available in a ROOT installation.
+* __Package manager__: An actor that can locate and install packages into a ROOT installation from a package reference, along with their transitive dependencies.
 
 There are other legacy large object-oriented software systems which, similar to ROOT, consisting of a large number of interdependent  and loosely-coupled classes, mostly organized as set of libraries and build targets.  Classes are often the lowest level of granularity to serve as a unit of software modularization. In ecosystems such as Java,  Python and C++, a further package structure can allow software developers organize their programs into components. A good organization of classes into identifiable and collaborating packages eases the understanding, maintenance of software. To improve the quality of software modularization, assessing the package organization is required.
 
@@ -70,15 +70,15 @@ ROOT package is defined as a grouping of software for data analysis and associat
 Manifest file is a file which describes the content of a package. It has self-describing and easy to process by machines format. The manifest file contains information about how the contents should be built, deployed and versionized. 
 
 For example, a package shall contain:
-1. Manifest file
-2. Code
-  1. Set of entities which are grouped in a module
-3. Code validation:
-  1. Checks for correctness
-  2. Checks for performance
-4. Documentation
-  1. User documentation
-  2. Developer documentation
+* Manifest file
+* Code
+  * Set of entities which are grouped in a module
+* Code validation
+  * Checks for correctness
+  * Checks for performance
+* Documentation
+  * User documentation
+  * Developer documentation
 
 Packages can be source or binary. A source package is a package which needs to be built before it can be used. That can impose extra requirements for the users, that is they will have to provide a compiler and external libraries in order to use the package. A binary package is a pre-built source package. Pre-built packages might have specific requirements to the runtime environment. Package byproducts are a set of modules, which could be packed as a library and/or executables, with documentation and unit tests. 
 
@@ -107,26 +107,25 @@ Manifest: set of metadata describing the package.
 Main problem is be defined is what will be a format of ROOT package and how to resolve it.
 
 The most convenient format is a zip file  with manifest that could define a way how the package should be plugged into the ecosystem. Zip file format is also friendly format for Github distribution of packages which making it more friendly for external developers and contributors.
-```
+```yaml
 package:
-    name: "Math"
-    dependencies: 
-        packageurl: "https://github.com/root-project/math/"
+  name: "Math"
+  dependencies: 
+    packageurl: "https://github.com/root-project/math/"
 Tag: "0.9.0"
-    targets:
-        target
-            name: "Math"
-            dependencies: “gsl"
+  targets:
+    target
+      name: "Math"
+      dependencies: “gsl"
 Products:
   Module:
-	name: MathCore
-	Type:xxx
-	targets: xxx
+    name: MathCore
+    Type:xxx
+    targets: xxx
   Module:
-	name: MathMore
-	type: xxx
-	targets: xxx
-….
+    name: MathMore
+    type: xxx
+    targets: xxx
 ```
 
 To add ZIP package as a dependency Core,  it should be added  to the Dependencies of Core Manifest file and refer to that dependency in Target.
@@ -158,10 +157,12 @@ Versioning problem could be by itself an independent root-evolution proposal, af
 10. Dependency Resolution
 11. Resource Management
 12. And many more.
+
 ## Impact on existing code
 No impact on existing source code by itself, but it could change a code distribution schema for ROOT  eco-system (ROOT based projects).
 
 ## Resolution
 We hope to get a feedback from community to evaluate if it supports an idea of development of package manager for ROOT.
 
+## Acknowledgments
 The project will be developed by support of DIANA-HEP funding.
