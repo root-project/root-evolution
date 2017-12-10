@@ -94,32 +94,54 @@ A package is described by a *manifest* file. The manifest file has a well-define
 * Dependency list
 * Dependency version
 
-### Example of package
-Main problem is be defined is what will be a format of ROOT package and how to resolve it.
+### An example package
+In this section we outline how to encapsulate `math` from ROOT into its own package. The example is illustrational and does not suggest ROOT's math to be a package.
 
-The most convenient format is a zip file  with manifest that could define a way how the package should be plugged into the ecosystem. Zip file format is also friendly format for Github distribution of packages which making it more friendly for external developers and contributors.
+#### Manifest file
+
+In this section we make a straw-man proposal how the package manifest file may look like.
 ```yaml
 package:
   name: "Math"
-  dependencies: 
-    packageurl: "https://github.com/root-project/math/"
-Tag: "0.9.0"
+  version: "6.12"
+  packageurl: "https://github.com/root-project/root/math/"
+Branch: "6.12"
   targets:
     target
       name: "Math"
-      dependencies: "gsl"
+      dependencies: ["root-base", "gsl2.0"]
 Products:
   Module:
     name: MathCore
-    Type: xxx
+    Type: Library
     targets: xxx
+    sourceurl: "https://github.com/root-project/root/math/mathcore/"
   Module:
     name: MathMore
-    type: xxx
+    type: Library
     targets: xxx
+    sourceurl: "https://github.com/root-project/root/math/mathmore/"
 ```
 
-To add ZIP package as a dependency Core,  it should be added  to the Dependencies of Core Manifest file and refer to that dependency in Target.
+#### Core, testing, documentation
+
+By default we assume the directory structure of the `sourceurl` is the following:
+
+```bash
+math
+   |--- manifest.yaml
+   |---inc/
+   |---src/
+   |---test/
+   |---perf/
+   |---doc/
+   |---res/
+```
+
+If the package source tree follows other structure this has to be expressed with more configuration in the manifest file.
+
+
+A very convenient shipping format is an archive file. For example, zip files are also Github-friendly way of package distribution which can make external contributions easier.
 
 ## Dependencies
 There is no single centralized index of packages. A package's metadata and dependencies are specified in manifest file, which is stored along with the code in its repository. 
