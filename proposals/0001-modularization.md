@@ -1,7 +1,7 @@
 # ROOT Modularization
 
 * Proposal: [ROOT-0001](0001-modularization.md)
-* Authors: [Brian Bockelman](https://github.com/bbockelm),  [Oksana Shadura](https://github.com/oshadura), Vassil Vassilev](https://github.com/vgvassilev)
+* Authors: [Brian Bockelman](https://github.com/bbockelm),  [Oksana Shadura](https://github.com/oshadura), [Vassil Vassilev](https://github.com/vgvassilev)
 * Review Manager: 
 * Status: Under review
 * Decision Notes:
@@ -162,6 +162,6 @@ Versioning problem could be by itself an independent root-evolution proposal, af
 No impact on existing source code by itself, but it could change a code distribution schema for ROOT  eco-system (ROOT based projects).
 
 ## Resolution
-We hope to get a feedback from community to evaluate if it is  supports an idea of development of package manager for ROOT.
+We hope to get a feedback from community to evaluate if it supports an idea of development of package manager for ROOT.
 
 The project will be developed by support of DIANA-HEP funding.
