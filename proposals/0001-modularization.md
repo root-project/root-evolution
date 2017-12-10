@@ -18,7 +18,7 @@ Thus, we propose to add four concepts to the ROOT ecosystem:
 * __Package database__: A record of all packages currently available in a ROOT installation.
 * __Package manager__: An actor that can locate and install packages into a ROOT installation from a package reference, along with their transitive dependencies.
 
-There are other legacy large object-oriented software systems which, similar to ROOT, consisting of a large number of interdependent  and loosely-coupled classes, mostly organized as set of libraries and build targets.  Classes are often the lowest level of granularity to serve as a unit of software modularization. In ecosystems such as Java,  Python and C++, a further package structure can allow software developers organize their programs into components. A good organization of classes into identifiable and collaborating packages eases the understanding, maintenance of software. To improve the quality of software modularization, assessing the package organization is required.
+There are other legacy large object-oriented software systems which, similar to ROOT, consisting of a large number of interdependent  and loosely-coupled classes, mostly organized as set of libraries and build targets.  Classes are often the lowest level of granularity to serve as a unit of software modularization. In ecosystems such as Java,  Python and C++, a further package structure can allow software developers organize their programs into components. A good organization of classes into identifiable and collaborating packages eases the understanding, maintenance of software. To improve the quality of software modularization, assessing the package organization is required [[3]].
 
 Since we address large software systems, such as ROOT framework, consisting of a very large number of classes and packages, we consider that packages are the units of software modularization. 
 
@@ -30,7 +30,8 @@ A ROOT module is a set of functions, types, classes and etc., defined in a commo
 
 Modularization defines a way of grouping of functionality from a software product. It outlines groups in form of modules which identify a particular piece of functionality to solve a set of problems. In general, modularization helps reducing management, coordination and development costs.
 
-We aim to define a set of mechanisms that enables a modular version of ROOT, centered around C++ modules, a packaging ecosystem.
+We aim to define a set of mechanisms that enables a modular version of ROOT, centered around C++ modules [[1]] [[2]], a packaging ecosystem.
+
 Library dependencies alone result in an imposingly complex relationship diagram. By introducing a module layer, we would provide better boundaries between components, allowing ROOT to scale as a project. For example, the level of expertise for the contributor needs can be more localized. It could mean that ROOT by itself could evolve in new phase, and can potentially interact with many more packages and turns itself into even more useful toolkit. 
 
 By making the boundaries and relationships more explicit through modules, we can better define and implement a “minimal ROOT,” increasing the chances its functionality can be embedded in other contexts. This enables ROOT users to interact with the wider data science ecosystem.
@@ -49,7 +50,7 @@ Main idea is to provide modularisation of ROOT and easy separability in multiple
 
 Minimal requirement for ROOT package manager is  to be able to define the dependency and the version, in manifest of package. It could be done either for ROOT packages or for external dependencies (compression algorithms packages, for example). This should be a basic schema for “in-source” modularization of ROOT subsystems and for plugin procedure of packages that are stored in Git and defined as ROOT external dependencies.
 
-Maximum requirements for package manager could be a next set of features (the list is inspired by functionality of Swift Package Manager, which is supported by a large Swift community, see section “Future aspects of design”).
+Maximum requirements for package manager could be a next set of features (the list is inspired by functionality of Swift Package Manager, which is supported by a large Swift community, see section “Future aspects of design”)[[8]].
 
 ## Source compatibility
 ROOT project source compatibility is one main features of project providing by “regression” test suites (tutorials/roottest/rootbench repositories). 
@@ -166,3 +167,40 @@ We hope to get a feedback from community to evaluate if it supports an idea of d
 
 ## Acknowledgments
 The project will be developed by support of DIANA-HEP funding.
+
+## Resources
+(1): [Vassilev, V., 2017, October. Optimizing ROOT’s Performance Using C++ Modules. In Journal of Physics: Conference Series (Vol. 898, No. 7, p. 072023). IOP Publishing.][1]
+
+(2): [Clang Modules][2]
+
+(3): [Abdeen, H., Ducasse, S. and Sahraoui, H., 2011, October. Modularization metrics: Assessing package organization in legacy large object-oriented software. In Reverse Engineering (WCRE), 2011 18th Working Conference on (pp. 394-398). IEEE.][3]
+
+(4): [Martin, R.C., 2002. Agile software development: principles, patterns, and practices. Prentice Hall][4]
+
+(5): [Parnas, D.L., 1972. On the criteria to be used in decomposing systems into modules. Communications of the ACM, 15(12), pp.1053-1058.][5]
+
+(6): [Java Modularization Dashboard][6]
+
+(7): [Python Import System][7]
+
+(8): [Swift Package Manager, Community Proposal][8]
+
+
+[//]: # (Links)
+[1]: https://www.researchgate.net/profile/Vassil_Vassilev3/publication/319717664_Optimizing_ROOT%27s_Performance_Using_C_Modules/links/59bad690aca272aff2d01c1c/Optimizing-ROOTs-Performance-Using-C-Modules.pdf "Vassilev, V., 2017, October. Optimizing ROOT’s Performance Using C++ Modules. In Journal of Physics: Conference Series (Vol. 898, No. 7, p. 072023). IOP Publishing."
+
+[2]: https://clang.llvm.org/docs/Modules.html "Clang Modules"
+
+[3]: https://scm.gforge.inria.fr/anonscm/svn/cutter/OtherDocs/2011WCRE-ModularizationMetrics.pdf "Abdeen, H., Ducasse, S. and Sahraoui, H., 2011, October. Modularization metrics: Assessing package organization in legacy large object-oriented software. In Reverse Engineering (WCRE), 2011 18th Working Conference on (pp. 394-398). IEEE."
+
+[4]: http://druss.co/wp-content/uploads/2013/10/Agile-Principles-Patterns-and-Practices-in-C.pdf "Martin, R.C., 2002. Agile software development: principles, patterns, and practices. Prentice Hall"
+
+[5]: https://dl.acm.org/citation.cfm?id=361623 "Parnas, D.L., 1972. On the criteria to be used in decomposing systems into modules. Communications of the ACM, 15(12), pp.1053-1058."
+
+[6]: http://openjdk.java.net/projects/jigsaw/dashboards/modularization "Java Modularization Dashboard"
+
+[7]: https://docs.python.org/3/reference/import.html "Python Import System"
+
+[8]: https://github.com/apple/swift-package-manager/blob/master/Documentation/PackageManagerCommunityProposal.md "Swift Package Manager, Community Proposal"
+
+[9]: https://medium.com/@sdboyer/so-you-want-to-write-a-package-manager-4ae9c17d9527 "So you want to write a package manager, Blog Post"
