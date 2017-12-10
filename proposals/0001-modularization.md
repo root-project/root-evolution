@@ -52,17 +52,6 @@ Minimal requirement for ROOT package manager is  to be able to define the depend
 
 Maximum requirements for package manager could be a next set of features (the list is inspired by functionality of Swift Package Manager, which is supported by a large Swift community, see section ''Future aspects of design'')[[8]].
 
-## Source compatibility
-ROOT project source compatibility is one main features of project providing by ''regression'' test suites (tutorials/roottest/rootbench repositories). 
-
-New modules should pass full compatibility test suite including support of OS vs. compiler matrix used in Jenkins CI.
-Modularization tool could provide a possibility of testing external projects as a part of new modules to be included in ROOT.
-
-## Alternatives considered
-One of ideas is to provide a ''homebrew''-like tool that will be able to provide cross platform installation of modules (libraries), with dependencies based on recipes which could be closer to OS package manager. 
-
-''Homebrew'' packaging system by itself is Git-based system with allow user or developer easily upload, synchronize, and extend existing modules - recipes. Homebrew is supported on Mac OS X, has a fork for Linux - LinuxBrew, and there are some efforts in porting it to Windows (need to be tested). Homebrew by itself already has a recipe of ROOT version 5.34.36 and 6.08.10, so first step could be to update existing recipe for ROOT6 and other tags. The second alternative was to develop "ROOTBrew" system.
-
 ## Packaging
 To have a successful socialization of ROOT project via modularization, we need to agree on a format of ROOT package and define set of available modules and its packages for existing monolithic ROOT framework.
 
@@ -161,6 +150,17 @@ Versioning problem could be by itself an independent root-evolution proposal, af
 10. Dependency Resolution
 11. Resource Management
 12. And many more.
+
+## Source compatibility
+ROOT project source compatibility is one main features of project providing by ''regression'' test suites (tutorials/roottest/rootbench repositories). 
+
+New modules should pass full compatibility test suite including support of OS vs. compiler matrix used in Jenkins CI.
+Modularization tool could provide a possibility of testing external projects as a part of new modules to be included in ROOT.
+
+## Alternatives considered
+One of ideas is to provide a ''homebrew''-like tool that will be able to provide cross platform installation of modules (libraries), with dependencies based on recipes which could be closer to OS package manager. 
+
+''Homebrew'' packaging system by itself is Git-based system with allow user or developer easily upload, synchronize, and extend existing modules - recipes. Homebrew is supported on Mac OS X, has a fork for Linux - LinuxBrew, and there are some efforts in porting it to Windows (need to be tested). Homebrew by itself already has a recipe of ROOT version 5.34.36 and 6.08.10, so first step could be to update existing recipe for ROOT6 and other tags. The second alternative was to develop "ROOTBrew" system.
 
 ## Impact on existing code
 No impact on existing source code by itself, but it could change a code distribution schema for ROOT  eco-system (ROOT based projects).
