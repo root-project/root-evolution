@@ -55,7 +55,7 @@ Maximum requirements for package manager could be a next set of features (the li
 ## Packaging
 To have a successful socialization of ROOT project via modularization, we need to agree on a format of ROOT package and define set of available modules and its packages for existing monolithic ROOT framework.
 
-ROOT package is defined as a grouping of software for data analysis and associated resources, intended for it distribution (extension or upgrade of  ROOT functionality). The definition of package assumes a contract for code organization in order to simplify the build and deploy steps. The contract defines a manifest file and particular organization of each module.
+ROOT package is defined as a grouping of software for data analysis and associated resources, intended for it distribution (extension or upgrade of  ROOT functionality). The definition of package assumes a contract for code organization in order to simplify the build and deploy steps. The contract defines a *manifest* file and particular organization of each module.
 
 Manifest file is a file which describes the content of a package. It has self-describing and easy to process by machines format. The manifest file contains information about how the contents should be built, deployed and versionized. 
 
@@ -87,14 +87,12 @@ A ROOT package managing system can manage the package lifetime to ensure sustain
 It is challenging to define package granularity. That is left for the users. Packages should not contain too little and too big modules because this in a way defeats the purpose of modularization. Packages should not contain too many and too small modules because this introduces a lot of package management overhead. 
 
 ### Manifest file
-Package is defined by set of fields defined in a ''manifest'' file. Manifest file is particularly defined the format of file that defined the invoice of package, like list of dependencies or source of package.
-
-Manifest: set of metadata describing the package.
-1. Name of package
-2. Version
-3. Versioned dependencies of package
-4. Possible source URL
-5. List of dependencies
+A package is described by a *manifest* file. The manifest file has a well-defined, textual format which expresses important package properties. It contains metadata such as:
+* Package name
+* Package version
+* Package source location
+* Dependency list
+* Dependency version
 
 ### Example of package
 Main problem is be defined is what will be a format of ROOT package and how to resolve it.
@@ -113,7 +111,7 @@ Tag: "0.9.0"
 Products:
   Module:
     name: MathCore
-    Type:xxx
+    Type: xxx
     targets: xxx
   Module:
     name: MathMore
