@@ -2,7 +2,7 @@
 
 * Proposal: [ROOT-0001](0001-modularization.md)
 * Authors: [Brian Bockelman](https://github.com/bbockelm),  [Oksana Shadura](https://github.com/oshadura), [Vassil Vassilev](https://github.com/vgvassilev)
-* Review Manager: 
+* Review Coordinator: 
 * Status: Under review
 * Decision Notes:
 * Bug:
@@ -30,17 +30,17 @@ A ROOT module is a set of functions, types, classes and etc., defined in a commo
 
 Modularization defines a way of grouping of functionality from a software product. It outlines groups in form of modules which identify a particular piece of functionality to solve a set of problems. In general, modularization helps reducing management, coordination and development costs.
 
-We aim to define a set of mechanisms that enables a modular version of ROOT, centered around C++ modules [[1]] [[2]], a packaging ecosystem.
+We aim to define a set of mechanisms that enables a modular version of ROOT, centered around C++ modules [[1]] [[2]], working as package-centric ecosystem.
 
-Library dependencies alone result in an imposingly complex relationship diagram. By introducing a module layer, we would provide better boundaries between components, allowing ROOT to scale as a project. For example, the level of expertise for the contributor needs can be more localized. It could mean that ROOT by itself could evolve in new phase, and can potentially interact with many more packages and turns itself into even more useful toolkit. 
+Library dependencies alone result in an imposingly complex relationship diagram. By introducing a module layer, we would provide better boundaries between components, allowing ROOT to scale as a project. For example, the level of expertise for the contributor needs can be more localized. It could mean that ROOT by itself could evolve in a new phase, and can potentially interact with many more packages and turns itself into even more useful toolkit. 
 
-By making the boundaries and relationships more explicit through modules, we can better define and implement a “minimal ROOT,” increasing the chances its functionality can be embedded in other contexts. This enables ROOT users to interact with the wider data science ecosystem.
+By making the boundaries and relationships more explicit through modules, we can better define and implement a ''minimal ROOT'', increasing the chances its functionality can be embedded in other contexts. This enables ROOT users to interact with the wider data science ecosystem.
 
 Packages and package management provide a mechanism for ROOT users to socialize and and reuse projects built in the context of ROOT, it helps to make ROOT more flexible and open for new customers.  This allows ROOT to continue to serve as a community nexus.
 
-In particular, this provides the ROOT team with an improved mechanism to say “no” to new modules within the ROOT source itself as users can simply share their packages among each other or in a common store such as github.
+In particular, this provides the ROOT team with an improved mechanism to say ''no'' to new modules within the ROOT source itself as users can simply share their packages among each other or in a common store such as github.
 
-Having a package format can help define community standards and allows the community to go in a similar direction, focusing what effort we have and then in the same time to reduces the desire / ability for every experiment and analysis group to ‘invent their own’ set of packaging on top.
+Having a package format can help define community standards and allows the community to go in a similar direction, focusing what effort we have and then in the same time to reduces the desire / ability for every experiment and analysis group to invent their own set of packaging on top.
 
 ## Proposed solution
 
@@ -48,20 +48,20 @@ Main idea is to provide modularisation of ROOT and easy separability in multiple
 
 ## Idea
 
-Minimal requirement for ROOT package manager is  to be able to define the dependency and the version, in manifest of package. It could be done either for ROOT packages or for external dependencies (compression algorithms packages, for example). This should be a basic schema for “in-source” modularization of ROOT subsystems and for plugin procedure of packages that are stored in Git and defined as ROOT external dependencies.
+Minimal requirement for ROOT package manager is  to be able to define the dependency and the version, in manifest of package. It could be done either for ROOT packages or for external dependencies (compression algorithms packages, for example). This should be a basic schema for ''in-source;; modularization of ROOT subsystems and for plugin procedure of packages that are stored in Git and defined as ROOT external dependencies.
 
-Maximum requirements for package manager could be a next set of features (the list is inspired by functionality of Swift Package Manager, which is supported by a large Swift community, see section “Future aspects of design”)[[8]].
+Maximum requirements for package manager could be a next set of features (the list is inspired by functionality of Swift Package Manager, which is supported by a large Swift community, see section ''Future aspects of design'')[[8]].
 
 ## Source compatibility
-ROOT project source compatibility is one main features of project providing by “regression” test suites (tutorials/roottest/rootbench repositories). 
+ROOT project source compatibility is one main features of project providing by ''regression'' test suites (tutorials/roottest/rootbench repositories). 
 
 New modules should pass full compatibility test suite including support of OS vs. compiler matrix used in Jenkins CI.
 Modularization tool could provide a possibility of testing external projects as a part of new modules to be included in ROOT.
 
 ## Alternatives considered
-One of ideas is to provide a “homebrew” like tool that will be able to provide cross platform installation of modules (libraries), with dependencies based on recipes which could be closer to OS package manager. 
+One of ideas is to provide a ''homebrew''-like tool that will be able to provide cross platform installation of modules (libraries), with dependencies based on recipes which could be closer to OS package manager. 
 
-“Homebrew” packaging system by itself is Git-based system with allow user or developer easily upload, synchronize, and extend existing modules - recipes. Homebrew is supported on Mac OS X, has a fork for Linux - LinuxBrew, and there are some efforts in porting it to Windows (need to be tested). Homebrew by itself already has a recipe of ROOT version 5.34.36 and 6.08.10, so first step could be to update existing recipe for ROOT6 and other tags. The second alternative was to develop "ROOTBrew" system.
+''Homebrew'' packaging system by itself is Git-based system with allow user or developer easily upload, synchronize, and extend existing modules - recipes. Homebrew is supported on Mac OS X, has a fork for Linux - LinuxBrew, and there are some efforts in porting it to Windows (need to be tested). Homebrew by itself already has a recipe of ROOT version 5.34.36 and 6.08.10, so first step could be to update existing recipe for ROOT6 and other tags. The second alternative was to develop "ROOTBrew" system.
 
 ## Packaging
 To have a successful socialization of ROOT project via modularization, we need to agree on a format of ROOT package and define set of available modules and its packages for existing monolithic ROOT framework.
@@ -89,7 +89,7 @@ Packages can be source or binary. A source package is a package which needs to b
 Package manager is a tool (usually a standalone tool) for managing the distribution of software code. There are two separate entities (third one is OS package manager (OSPM) that we are not interested in the current discussion):
 
 1. Language package manager (LPM): an interactive tool (e.g., `go get`) that can retrieve and build specified packages of source code for a particular language (or in the case of ROOT particular runtime).
-2. Project/application dependency manager (PDM): an interactive system for managing the source code dependencies of a single project in a particular language. That means specifying, retrieving, updating, arranging on disk, and removing sets of dependent source code, in such a way that collective coherence is maintained beyond the termination of any single command. Its output , which is precisely reproducible , is a self-contained source tree that acts as the input to a compiler or interpreter. One might think of it as “compiler, phase zero.”
+2. Project/application dependency manager (PDM): an interactive system for managing the source code dependencies of a single project in a particular language. That means specifying, retrieving, updating, arranging on disk, and removing sets of dependent source code, in such a way that collective coherence is maintained beyond the termination of any single command. Its output , which is precisely reproducible , is a self-contained source tree that acts as the input to a compiler or interpreter. One might think of it as ''compiler, phase zero.''
 
 We think about ROOT package manager in terms of of LPM and PDM.
 
@@ -98,7 +98,7 @@ A ROOT package managing system can manage the package lifetime to ensure sustain
 It is challenging to define package granularity. That is left for the users. Packages should not contain too little and too big modules because this in a way defeats the purpose of modularization. Packages should not contain too many and too small modules because this introduces a lot of package management overhead. 
 
 ### Manifest file
-Package is defined by set of fields defined in “manifest” file. Manifest file is particularly defined the format of file that defined the invoice of package, like list of dependencies or source of package.
+Package is defined by set of fields defined in a ''manifest'' file. Manifest file is particularly defined the format of file that defined the invoice of package, like list of dependencies or source of package.
 
 Manifest: set of metadata describing the package.
 1. Name of package
@@ -120,7 +120,7 @@ Tag: "0.9.0"
   targets:
     target
       name: "Math"
-      dependencies: “gsl"
+      dependencies: "gsl"
 Products:
   Module:
     name: MathCore
