@@ -80,6 +80,9 @@ For example, a package shall contain:
 * Documentation
   * User documentation
   * Developer documentation
+* Resources
+  * Binary files (such as images and icons)
+  * Scripts
 
 Packages can be source or binary. A source package is a package which needs to be built before it can be used. That can impose extra requirements for the users, that is they will have to provide a compiler and external libraries in order to use the package. A binary package is a pre-built source package. Pre-built packages might have specific requirements to the runtime environment. Package byproducts are a set of modules, which could be packed as a library and/or executables, with documentation and unit tests. 
 
