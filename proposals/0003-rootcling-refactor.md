@@ -23,11 +23,11 @@ rootcling also doesn't have the best code quality. It has undocumented functions
 
 #### The C++ modules problem
 
-These shortcoming became very apparent after the introduction of C++ modules to ROOT: Suddenly rootcling, which now also had to generate a C++ module alongside the other files, needed to respect dependencies between headers.
+These shortcomings became very apparent after the introduction of C++ modules to ROOT: Suddenly rootcling, which now also had to generate a C++ module alongside the other files, needed to respect dependencies between headers.
 
 This meant that rootcling invocations couldn't be run in serial anymore and not running rootcling in the right order would produce errors. Also the interpreter runtime helpers (like `input_line` source locations) that already exist in the PCH were now duplicated in all produced C++ modules. Furthermore, implementing the C++ modules generation from inside rootcling (which also means from inside the cling interpreter), requires us to duplicate a lot of work that clang could do for us.
 
-The obvious solution to this is not implement the C++ module generation inside rootcling . However, due to all the shortcomings of rootcling's design, it's not possible to simply extract the C++ module logic into it's own independent executable and leaving rootcling unaffected. A C++ module created in any other way than reusing the rootcling infrastructure will cause unexplainable and hard to debug test failures in ROOT, as it could miss some part that rootcling somehow added to a normal C++ module.
+The obvious solution to this is not implementing the C++ module generation inside rootcling. However, due to all the shortcomings of rootcling's design, it's not possible to simply extract the C++ module logic into its own independent executable and leaving rootcling unaffected. A C++ module created in any other way than reusing the rootcling infrastructure will cause unexplainable and hard to debug test failures in ROOT, as it could miss some part that rootcling somehow added to a normal C++ module.
 
 To summarize: The current situation of rootcling is not good for the development of ROOT. Any future features to rootcling require enormous amount of work to correctly implement them.
 
