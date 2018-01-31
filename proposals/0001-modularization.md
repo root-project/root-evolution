@@ -13,7 +13,7 @@ One clear advantage of object-oriented systems is the ability to have abstractio
 
 Thus, we propose to add four concepts to the ROOT ecosystem:
 * __Module__: A set of interdependent classes implementing coherent functionality and providing well-defined APIs.
-  * __Library__: a module or set of modules  which solves a global problem, while  being  together and that can be used in a program or another library.
+* __Library__: a module or set of modules  which solves a global problem, while  being  together and that can be used in a program or another library.
 * __Package__: A distinct, self-describing resource (file, URL) that provide one or more modules.
 * __Package database__: A record of all packages currently available in a ROOT installation.
 * __Package manager__: An actor that can locate and install packages into a ROOT installation from a package reference, along with their transitive dependencies.
@@ -189,7 +189,7 @@ No impact on existing source code by itself, but it could change a code distribu
 We hope to get a feedback from community to evaluate if it supports an idea of development of package manager for ROOT.
 
 ## Acknowledgments
-The project will be developed by support of DIANA-HEP funding.
+The project is developing by support of DIANA-HEP funding.
 
 ## Resources
 (1): [Vassilev, V., 2017, October. Optimizing ROOT’s Performance Using C++ Modules. In Journal of Physics: Conference Series (Vol. 898, No. 7, p. 072023). IOP Publishing.][1]
