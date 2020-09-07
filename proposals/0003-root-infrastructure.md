@@ -76,7 +76,7 @@ ET: A given PR choses a particular flavor and it is fine -- then the same flavor
 
 Xavi: why do not we want to use containers? A: we want build artifacts to debug.
 
-SH: Address sanitizer -- it is expensive to run but we should have this. We should add this in a section where people see it.
+SH: Address sanitizer -- it is expensive to run but we should have this. Currently it is in the Experimental section and has a few tests which need fixing. We should add this in a section where people see it. Ideally, would be nice to have the address sanitizer build available on a machine that people could just log in to for testing. If you encounter something strange, you could put your patch on top of the nightly build, and "just" run it using address sanitizer instrumentation without having to set it up yourself.
 
 JB: Do we use coverity? A: We have it (incl coverage build). Currently failing but somebody need to fix them.
 
